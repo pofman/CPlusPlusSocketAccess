@@ -5,22 +5,22 @@ using namespace std;
 
 class Menu{
 	protected:
-		vector<int> *options;
+		vector<string> *options;
 
 	public:
 	Menu()
 	{
-		options = new vector<int>();
+		options = new vector<string>();
 	}
 
-	void AddOption(int option)
+	void AddOption(string option)
 	{
 		options->push_back(option);
 	}
 
 	void Render()
 	{
-		for(vector<int>::iterator it = options->begin(); it != options->end(); ++it) {
+		for(vector<string>::iterator it = options->begin(); it != options->end(); ++it) {
     		cout << *it << endl;
 		}
 		WaitForInput();
@@ -33,13 +33,29 @@ class Menu{
 		cout << OptionFor(input) << endl;
 	}
 
-	int OptionFor(int selectedOption)
+	string OptionFor(int selectedOption)
 	{
-		for(vector<int>::iterator it = options->begin(); it != options->end(); ++it) {
-    		if(*it == selectedOption)
-    			return *it;
+		try
+		{
+			int option = selectedOption -1;
+			if(option >= 0 && option < options->size())
+			{
+				return (*options)[selectedOption - 1];
+			}
+			else
+			{
+				return "Option not found";
+			}
+		}
+		catch (std::exception& e){
+			return "Option not found";
 		}
 
-		return -1;
+		//if(options->size() < selectedOption)
+		//for(vector<string>::iterator it = options->begin(); it != options->end(); ++it) {
+    	//	if(*it == selectedOption)
+    	//		return *it;
+		//}
+		//return "Option not found";
 	}
 };

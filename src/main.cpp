@@ -8,7 +8,7 @@ int main()
 
 	cout << "Welcome to the App" << endl;
 	menu = new Menu();
-	menu->AddOption(1);
-	menu->AddOption(2);
+	menu->AddOption("1 - Opcion One");
+	menu->AddOption("2 - Opcion Two");
 	menu->Render();
 }
