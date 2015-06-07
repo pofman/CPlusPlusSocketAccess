@@ -49,12 +49,5 @@ class Menu{
 		catch (std::exception& e){
 			return "Option not found";
 		}
-
-		//if(options->size() < selectedOption)
-		//for(vector<string>::iterator it = options->begin(); it != options->end(); ++it) {
-    	//	if(*it == selectedOption)
-    	//		return *it;
-		//}
-		//return "Option not found";
 	}
 };
