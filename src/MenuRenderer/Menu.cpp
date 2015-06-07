@@ -6,24 +6,24 @@ using namespace std;
 
 class Menu{
 	protected:
-		vector<string> *options;
+		vector<reference_wrapper<Option>> *options;
 
 	public:
 		Menu()
 		{
-			options = new vector<string>();
+			options = new vector<reference_wrapper<Option>>();
 		}
 
 		void AddOption(string option)
 		{
 			Option *opt = new Option(option, []() -> void  { std::cout << "Hello";  });
-			options->push_back(option);
+			options->push_back(*opt);
 		}
 
 		void Render()
 		{
-			for(vector<string>::iterator it = options->begin(); it != options->end(); ++it) {
-				cout << *it << endl;
+			for(vector<reference_wrapper<Option>>::iterator it = options->begin(); it != options->end(); ++it) {
+				cout << it->get().Name() << endl;
 			}
 			WaitForInput();
 		}
@@ -42,7 +42,7 @@ class Menu{
 				int option = selectedOption -1;
 				if(option >= 0 && option < options->size())
 				{
-					return (*options)[selectedOption - 1];
+					return (*options)[selectedOption - 1].get().Name();
 				}
 				else
 				{

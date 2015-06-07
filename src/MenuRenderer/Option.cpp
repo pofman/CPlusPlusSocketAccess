@@ -7,9 +7,19 @@ class Option
 		string name;
 		std::function<void()> action;
 	public:
-			Option(string pName, std::function<void()> pAction)
-			{
-				name = pName;
-				action = pAction;
-			}
+		Option(string pName, std::function<void()> pAction)
+		{
+			name = pName;
+			action = pAction;
+		}
+
+		string Name()
+		{
+			return name;
+		}
+
+		void Do()
+		{
+			action();
+		}
 };
