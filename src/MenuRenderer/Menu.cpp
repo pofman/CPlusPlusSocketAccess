@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <malloc.h>
 using namespace std;
 
 class Menu{
