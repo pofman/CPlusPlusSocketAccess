@@ -12,7 +12,7 @@ using namespace std;
 class Client
 {
 	public:
-		Client(string hostName, int portno);
+		Client(char *hostName, int portno);
 
 	private:
 		void error(const char *msg);
@@ -24,14 +24,14 @@ void Client::error(const char *msg)
     exit(0);
 }
 
-Client::Client(string hostName, int portno)
+Client::Client(char *hostName, int portno)
 {
 	int sockfd, n;
 	struct sockaddr_in serv_addr;
 	struct hostent *server;
 
 	char buffer[256];
-	if ((hostName.empty()) || (!portno || portno == 0)) {
+	if ((hostName == NULL) || (!portno || portno == 0)) {
 	   fprintf(stderr,"usage hostname port\n");
 	   exit(0);
 	}
