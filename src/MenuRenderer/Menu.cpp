@@ -14,9 +14,9 @@ class Menu{
 			options = new vector<reference_wrapper<Option>>();
 		}
 
-		void AddOption(string option)
+		void AddOption(string option, std::function<void()> action)
 		{
-			Option *opt = new Option(option, []() -> void  { std::cout << "Hello";  });
+			Option *opt = new Option(option, action);
 			options->push_back(*opt);
 		}
 
